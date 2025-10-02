@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ABG Bible V3</title>
+  <meta name="theme-color" content="#160b0f">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🍒</span>
+      <h1>ABG Bible <span class="v2">V3</span></h1>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="generator">Generator</button>
+      <button class="tab-btn" data-tab="howtobag">How to Bag</button>
+      <button class="tab-btn" data-tab="howtofind">How to Find</button>
+      <button class="tab-btn" data-tab="signals">Signals</button>
+      <button class="tab-btn" data-tab="edgy">Dirty Dozen</button>
+      <button class="tab-btn" data-tab="cities">City Packs</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- GENERATOR -->
+    <section id="generator" class="tab active">
+      <div class="controls">
+        <div class="field">
+          <label for="channel">Channel</label>
+          <select id="channel">
+            <option value="IRL" selected>IRL</option>
+            <option value="Virtual">Virtual</option>
+          </select>
+        </div>
+
+        <div class="field"><label for="archetype">Archetype</label><select id="archetype"></select></div>
+
+        <div class="field" id="venue-field"><label for="venue">Venue</label><select id="venue"></select></div>
+        <div class="field" id="platform-field" hidden><label for="platform">Platform</label><select id="platform"></select></div>
+
+        <div class="row">
+          <div class="field"><label for="city">City</label><select id="city"></select></div>
+          <div class="field"><label for="timeOfDay">Time of Day</label>
+            <select id="timeOfDay"><option value="day">Day</option><option value="evening" selected>Evening</option><option value="late_night">Late Night</option></select>
+          </div>
+          <div class="field"><label for="interest">Interest</label>
+            <select id="interest"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select>
+          </div>
+        </div>
+
+        <!-- Advanced -->
+        <details class="advanced">
+          <summary>Advanced</summary>
+          <div class="row">
+            <div class="field">
+              <label for="mode">Mode</label>
+              <select id="mode">
+                <option value="safe">Safe</option>
+                <option value="normal" selected>Normal</option>
+                <option value="spicy">Spicy</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="goal">Goal</label>
+              <select id="goal">
+                <option value="vibe">Keep the vibe</option>
+                <option value="set_date" selected>Set a date</option>
+                <option value="pull_now">Pull now</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label>Party size (her side)</label>
+              <div class="chipbar" id="partySize">
+                <button class="chip chip-active" data-val="solo">Solo</button>
+                <button class="chip" data-val="pair">1–2</button>
+                <button class="chip" data-val="crew">Crew (4+)</button>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="row">
+          <div class="field">
+            <label for="ethnicity">Ethnicity Context (optional)</label>
+            <select id="ethnicity"><option value="">(none)</option></select>
+          </div>
+          <div class="switches">
+            <label class="switch"><input type="checkbox" id="edgy"><span>Edgy Mode</span></label>
+            <label class="switch"><input type="checkbox" id="includeEth"><span>Include Ethnicity Notes</span></label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="generate">Generate</button>
+          <button id="shuffle">Shuffle</button>
+          <button id="copy">Copy</button>
+          <button id="save">Save Plan</button>
+          <button id="viewSaved">Saved</button>
+        </div>
+      </div>
+
+      <article id="output" class="card"><div class="placeholder">Pick options and hit Generate.</div></article>
+
+      <!-- Feedback + Live signals -->
+      <div class="feedback card" id="feedbackBox" hidden>
+        <div class="row">
+          <div class="field">
+            <label>How did this plan feel?</label>
+            <div class="chipbar">
+              <button class="chip" data-fb="meh">Meh</button>
+              <button class="chip" data-fb="good">Good</button>
+              <button class="chip" data-fb="great">Great</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Signals (live)</label>
+            <div class="chipbar">
+              <button class="chip" data-sig="green">🟢</button>
+              <button class="chip" data-sig="yellow">🟡</button>
+              <button class="chip" data-sig="red">🔴</button>
+            </div>
+          </div>
+        </div>
+        <div class="small">Learns locally and re-scores pivots/closers.</div>
+      </div>
+    </section>
+
+    <!-- HOW TO BAG -->
+    <section id="howtobag" class="tab">
+      <article class="doc">
+        <h2>How to Bag (Practical Guide)</h2>
+        <h3>Frame & Pace</h3>
+        <p>Presence beats lines. Keep beats short, invite reciprocity, and match the scene.</p>
+        <h3>Greens / Yellows / Reds</h3>
+        <ul class="bullets">
+          <li><b>🟢 Greens →</b> escalate (pivot or close).</li>
+          <li><b>🟡 Yellows →</b> coast (soften, change environment).</li>
+          <li><b>🔴 Reds →</b> exit clean (respect is default).</li>
+        </ul>
+        <h3>Beats That Travel</h3>
+        <p>Option forks, 1–10 rating + “make it a 10?”, photo co-direct, two-window closes.</p>
+        <h3>Escalation Rules</h3>
+        <p>One green → minor escalate; two greens → pivot; green + timing → close.</p>
+        <h3>Exit Clean</h3>
+        <p>“Fun chat—catch you around.” Plant seeds over forcing finishes.</p>
+      </article>
+    </section>
+
+    <!-- HOW TO FIND -->
+    <section id="howtofind" class="tab">
+      <article class="doc">
+        <h2>How to Find (Lucky 13)</h2>
+        <div id="discover-list"></div>
+      </article>
+    </section>
+
+    <!-- SIGNALS -->
+    <section id="signals" class="tab">
+      <article class="doc">
+        <h2>Signals</h2>
+        <div class="grid-2">
+          <div>
+            <h3>IRL</h3>
+            <h4>⚪ Baseline</h4><ul id="signals-irl-baseline"></ul>
+            <h4>🟢 Green</h4><ul id="signals-irl-green"></ul>
+            <h4>🟡 Yellow</h4><ul id="signals-irl-yellow"></ul>
+            <h4>🔴 Red</h4><ul id="signals-irl-red"></ul>
+          </div>
+          <div>
+            <h3>Virtual</h3>
+            <h4>⚪ Baseline</h4><ul id="signals-vir-baseline"></ul>
+            <h4>🟢 Green</h4><ul id="signals-vir-green"></ul>
+            <h4>🟡 Yellow</h4><ul id="signals-vir-yellow"></ul>
+            <h4>🔴 Red</h4><ul id="signals-vir-red"></ul>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- EDGY -->
+    <section id="edgy" class="tab">
+      <article class="doc">
+        <h2>Dirty Dozen (Edgy Pack)</h2>
+        <div id="edgy-list"></div>
+      </article>
+    </section>
+
+    <!-- CITY PACKS -->
+    <section id="cities" class="tab">
+      <article class="doc">
+        <h2>City Packs</h2>
+        <div id="cities-list"></div>
+      </article>
+    </section>
+  </main>
+
+  <dialog id="savedDialog">
+    <h3>Saved Plans</h3>
+    <div id="savedList"></div>
+    <div class="dialog-actions">
+      <button id="closeSaved">Close</button>
+      <button id="clearSaved">Clear All</button>
+    </div>
+  </dialog>
+
+  <footer class="foot"><span>Personal use only. Respect &amp; consent first.</span></footer>
+
+  <script type="module" src="src/app.js"></script>
+  <script type="module" src="src/components/intro.js"></script>
+</body>
+</html>

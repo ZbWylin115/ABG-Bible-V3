@@ -1,0 +1,9 @@
+{
+  "name": "ABG Bible V3",
+  "short_name": "ABG Bible",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0e0a0c",
+  "theme_color": "#160b0f",
+  "icons": []
+}
